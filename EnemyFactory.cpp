@@ -9,6 +9,7 @@
 // Spawn enemy based on input string
 std::unique_ptr<Entity> EnemyFactory::SpawnEnemy(const std::string enemyToSpawn)
 {
+	// Spawn Entity
 	std::unique_ptr<Entity> spawnedEntity;
 	if (enemyToSpawn == "Spawn Freddy") spawnedEntity = freddyPool.RequestPoolItem();
 	else if (enemyToSpawn == "Spawn Bonnie") spawnedEntity = bonniePool.RequestPoolItem();
@@ -17,20 +18,24 @@ std::unique_ptr<Entity> EnemyFactory::SpawnEnemy(const std::string enemyToSpawn)
 	else if (enemyToSpawn == "Spawn Golden Freddy") spawnedEntity = goldenFreddyPool.RequestPoolItem();
 	else return nullptr;
 
+	// Has entity been spawned in?
 	if (!spawnedEntity) return nullptr;
 
+	// Event to as Event Listener (Observer)
 	spawnedEntity->onEntitySpawned.SubscribeToEvent([this]()
 		{
 			this->OnEntitySpawned();
 		});
 
+	// Execute the Beginplay Interface and return the entity
 	spawnedEntity->BeginPlay();
-
 	return spawnedEntity;
 }
 
+// Destroy the Entity
 void EnemyFactory::DestroyEntity(std::unique_ptr<Entity> entity)
 {
+	// Check which Pool to return the Entity to
 	if (entity->name == "Freddy") freddyPool.ReturnPoolItem(std::move(entity));
 	else if (entity->name == "Bonnie") bonniePool.ReturnPoolItem(std::move(entity));
 	else if (entity->name == "Chica") chicaPool.ReturnPoolItem(std::move(entity));

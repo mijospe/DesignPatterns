@@ -5,6 +5,7 @@
 
 class Event
 {
+private:
 	// The listeners for the event call
 	std::vector<std::function<void()>> listeners;
 

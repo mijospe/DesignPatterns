@@ -1,6 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "EnemyFactory.h"
+#include "EntityFactory.h"
 
 // Show the list of commands
 void CommandList()
@@ -26,7 +26,7 @@ int main()
     // The input of the user
     std::string input;
 
-    EnemyFactory factory{};
+    EntityFactory factory{};
 
     std::vector<std::unique_ptr<Entity>> entitiesInLevel;
 

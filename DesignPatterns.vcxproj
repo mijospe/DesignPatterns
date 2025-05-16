@@ -133,7 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EnemyFactory.cpp" />
+    <ClCompile Include="EntityFactory.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="GameBehaviour.cpp" />
@@ -141,7 +141,7 @@
     <ClCompile Include="ObjectPool.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EnemyFactory.h" />
+    <ClInclude Include="EntityFactory.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="GameBehaviour.h" />
